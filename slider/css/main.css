@@ -1,0 +1,17 @@
+.slider {
+  width: 300px;
+  margin: 40px auto;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.slider img {
+  width: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
