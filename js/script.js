@@ -1,14 +1,14 @@
 const operations = [
-    { type: '+', args: [1, 2]},
-    { type: '-', args: [7, -2]},
-    { type: '*', args: [3, 5]},
-    { type: '/', args: [8, 2]}
+    { type: '+', args: [1, 2] },
+    { type: '-', args: [7, -2] },
+    { type: '*', args: [3, 5] },
+    { type: '/', args: [8, 2] }
 ];
 
 const calculate = (operation) => {
     const [firstNumber, secondNumber] = operation.args;
 
-    switch(operation.type) {
+    switch (operation.type) {
         case '+':
             return firstNumber + secondNumber;
         case '-':
@@ -87,3 +87,54 @@ formEl.appendChild(calculateBtn);
 document.getElementById('app').appendChild(formEl);
 
 // Modyfikuj tylko ponizej
+firstInputEl.setAttribute('name', 'firstInput');
+
+addOptionEl.setAttribute('name', 'add');
+addOptionEl.setAttribute('value', '+');
+
+subtractOptionEL.setAttribute('name', 'substract');
+subtractOptionEL.setAttribute('value', '-');
+
+multiplyOptionEL.setAttribute('name', 'multiply');
+multiplyOptionEL.setAttribute('value', '*');
+
+divideOptionEL.setAttribute('name', 'divide');
+divideOptionEL.setAttribute('value', '/');
+
+secondInputEl.setAttribute('name', 'secondInput');
+
+
+formEl.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+
+    const first = parseFloat(data.get('firstInput'));
+    const second = parseFloat(data.get('secondInput'));
+    const myOperation = operationSelectEl.value;
+    
+    const success = document.createElement('div');
+    success.classList.add('alert', 'alert-success');
+
+    const failure = document.createElement('div');
+    failure.classList.add('alert', 'alert-danger');
+    failure.innerText = 'Błędne dane';
+
+    if (!isNaN(first) && !isNaN(second) && (operations.find(({type}) => type === myOperation))) {
+        if (second === 0 && myOperation === "/") {
+            formEl.prepend(failure);
+        }
+
+        const result = calculate({type: myOperation, args: [first, second] });
+        
+        success.innerText = `${first} ${myOperation} ${second} = ${result}`;
+
+        formEl.prepend(success);
+    
+    }
+    else {
+       
+        formEl.prepend(failure);
+    }
+
+});
