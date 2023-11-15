@@ -53,13 +53,17 @@ btnStart.addEventListener('click', (e) => {
     clearInterval(interval);
     interval = setInterval(startTimer, 1_00);
     btnStart.innerText = 'start';
+    btnStart.classList.add('clicked');
 
 });
 
 btnStop.addEventListener('click', (e) => {
     clearInterval(interval);
-    btnStart.innerText = 'wznów';
-})
+    if (btnStart.classList.contains('clicked')) {
+        btnStart.innerText = 'wznów';
+    }
+    btnStart.classList.remove('clicked');
+});
 
 btnReset.addEventListener('click', (e) => {
     clearInterval(interval);
@@ -97,7 +101,6 @@ const startTimer = () => {
 
     if (seconds > 9) {
         secondsDisplay.innerText = seconds;
-
     }
 
     if (seconds > 59) {
