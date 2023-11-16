@@ -17,6 +17,21 @@
             <button>Szukaj</button>
         </form>
 
+        <form id="add-form" action="" class="add-form">
+            <input type="text" name="title" placeholder="Wpisz tytuł">
+            <input type="text" name="author" placeholder="Wpisz imię i nazwisko autora/ki">
+
+            <button>Dodaj</button>
+        </form>
+
+        <form id="sort-form" action="" class="sort-form">
+            <select id = "sorting-options">
+                <option value = "" selected disabled>sortuj po tytule</option>
+                <option value = "up">sortuj tytuł A-Z</option>
+                <option value = "down">sortuj tytuł Z-A</option>
+            </select>
+        </form>
+
         <ul id="books-list" class="books-list"></ul>
     </div>
     
