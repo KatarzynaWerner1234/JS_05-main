@@ -6,7 +6,8 @@ fetch('https://jsonplaceholder.typicode.com/users')
             name: user.name,
             userName: user.username
         }));
-
+        let searchPhrase;
+        let sortDirection;
         const showUsers = (usersToShow) => {
             const $usersList = document.getElementById('users-list');
             $usersList.innerHTML='';
@@ -20,6 +21,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
                 
             });
         }
+        
         document.getElementById('search-form').addEventListener('submit', e => {
             e.preventDefault();
             const formData = new FormData(e.target);
@@ -52,6 +54,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
                     return 0;
                 });
                 showUsers(users);
+                sortDirection = 'up';
             }
 
             if (output === 'down') {
@@ -68,6 +71,7 @@ fetch('https://jsonplaceholder.typicode.com/users')
                     return 0;
                 });
                 showUsers(users);
+                sortDirection = 'down';
             }
 
         });
