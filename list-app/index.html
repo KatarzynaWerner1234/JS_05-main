@@ -10,6 +10,19 @@
   <script src="./js/main.js" defer></script>
 </head>
 <body>
+  <form id="search-form">
+    <input type="search" name="username" placeholder="Szukaj po  nazwie użytkownika">
+    <button>szukaj</button>
+  </form>
   
+  <form id="sort-form" action="" class="sort-form">
+    <select id = "sorting-options">
+        <option value = "" selected disabled>sortuj po nazwie użytkownika</option>
+        <option value = "up">sortuj nazwie użytkownika A-Z</option>
+        <option value = "down">sortuj nazwie użytkownika Z-A</option>
+    </select>
+</form>
+  
+  <ul id="users-list" class="users-list"></ul>
 </body>
 </html>
